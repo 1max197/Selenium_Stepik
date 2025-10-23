@@ -4,6 +4,9 @@ class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     FALSE_LOGIN_LINK = (By.CSS_SELECTOR, "#login_link_false")
 
+class BasePageLocators(MainPageLocators):
+    pass
+
 class LoginPageLocators():
     LOGIN_URL = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
