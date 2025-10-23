@@ -1,7 +1,11 @@
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+#from pages.login_page import LoginPage #+++ получеется циклический импорт
+#from pages.locators import MainPageLocators
+from pages.locators import BasePageLocators
 
 class BasePage():
     def __init__(self, browser, url, timeout=10):
@@ -54,3 +58,22 @@ class BasePage():
         except TimeoutException:
             return False
         return True
+    
+    def go_to_login_page(self):
+        #login_link = self.browser.find_element(By.CSS_SELECTOR, "#login_link")
+        login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        login_link.click()
+        #return LoginPage(browser=self.browser, url=self.browser.current_url) 
+    
+    def go_to_login_page_by_init_page_b_class(self):
+        #login_link = self.browser.find_element(By.CSS_SELECTOR, "#login_link")
+        from pages.login_page import LoginPage
+        login_link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        login_link.click()
+        return LoginPage(browser=self.browser, url=self.browser.current_url) 
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+    
+    def not_should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.FALSE_LOGIN_LINK), "Login link is not presented"

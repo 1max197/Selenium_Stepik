@@ -1,4 +1,4 @@
-from pages.main_page import MainPage
+#from pages.main_page import MainPage
 from pages.product_page import ProductPage
 from pages.locators import ProductPageLocators
 import time
@@ -115,3 +115,15 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     page.solve_quiz_and_get_code()
   
     page.should_be_success_message()
+
+def test_guest_should_see_login_link_on_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.should_be_login_link()
+
+def test_guest_should_go_product_page_by_login_link(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()
+    login_page = page.go_to_login_page_by_init_page_b_class()
