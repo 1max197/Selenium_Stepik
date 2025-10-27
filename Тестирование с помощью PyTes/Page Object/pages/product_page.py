@@ -1,4 +1,5 @@
 from pages.base_page import BasePage
+#from pages.basket_page import BasketPage
 from selenium.common.exceptions import NoAlertPresentException # в начале файла
 import math
 from pages.locators import ProductPageLocators
@@ -14,6 +15,11 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.BASKET), "Basket button is absence"
     
     def should_be_basket_button_clickable(self):
+        assert self.click_on_element(), "Basket button is not clickable"
+
+    #asdasd
+    def click_on_basket_button(self):
+        assert self.is_element_present(*ProductPageLocators.BASKET), "Basket button is not present"
         assert self.click_on_element(), "Basket button is not clickable"
 
     def should_be_form_goods_after_add_to_basket(self):
@@ -82,7 +88,7 @@ class ProductPage(BasePage):
         except NoAlertPresentException:
             print("No second alert presented")
 
-##################################################################
+
     def should_not_be_success_message(self):
         print("Я сделал этот шаг")
         assert self.is_not_element_present(*ProductPageLocators.TEXTGOODS_AFTER_BUSKET_ADDING), \
@@ -91,3 +97,5 @@ class ProductPage(BasePage):
     def should_be_success_message(self):
         assert self.is_disappeared(*ProductPageLocators.TEXTGOODS_AFTER_BUSKET_ADDING), \
         "Success message is presented, but should not be"
+
+

@@ -77,3 +77,16 @@ class BasePage():
     
     def not_should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.FALSE_LOGIN_LINK), "Login link is not presented"
+
+    def click_on_button_seebasket(self):
+        self.browser.find_element(*BasePageLocators.BUTTON_SEE_BASKET).click()
+
+    def click_on_button_seebasket_trough_selftest(self):
+        assert self.is_element_present(*BasePageLocators.BUTTON_SEE_BASKET), "BUTTON_SEE_BASKET link is not present"
+        #print(self.element.click()) #none
+        #assert self.element.click(), "BUTTON_SEE_BASKET link is not clickable"
+        assert self.click_on_element(), "BUTTON_SEE_BASKET link is not clickable"
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                 " probably unauthorised user"
