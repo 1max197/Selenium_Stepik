@@ -1,5 +1,8 @@
-cd "/c/Projects Python/Тестирование с помощью PyTes/Page Object"
-pytest -v -s -rx --browser_name=chrome --language=ru tests/test_product_page.py
-pytest -v -s -rx --browser_name=chrome --language=ru tests/test_loging_page.py
-pytest -v -s -rx --browser_name=chrome --language=ru tests/test_main_page.py
-pytest -v -s -rx --browser_name=chrome --language=ru tests/
+cd "Page Object"
+pip install -r requirements.txt  - установить зависимости
+
+pytest -v -s -rx --browser_name=chrome --language=ru tests/тест (запустить тестовый файл отдельно)
+pytest -v -s -rx --browser_name=chrome --language=ru tests (запустить всю папку с тестами)
+--browser_name=chrome или firefox
+--language=ru, en, fr
+
