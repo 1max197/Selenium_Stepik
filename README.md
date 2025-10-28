@@ -1,4 +1,4 @@
-cd "Page Object" ;
+cd "Тестирование с помощью PyTes/Page Object" ;
 
 pip install -r requirements.txt - установить зависимости ;
 pytest -v -s -rx --browser_name=chrome --language=ru tests/тест (запустить тестовый файл отдельно) ;
